@@ -1,6 +1,7 @@
 from drone import Drone
+from drone_exceptions import CargoLimitError
 
-class DeliveryDrone:
+class DeliveryDrone(Drone):
     """
     A delivery drone that inherits from Drone.
 
@@ -10,36 +11,33 @@ class DeliveryDrone:
     """
 
     def __init__(self, id: str, max_speed: int, current_location: tuple[float, float], cargo_capacity: float):
-        """
-        Initializes a delivery drone. 
-        Uses super() to initialize base attributes.
-        """
-        # TODO: Initialize the base attributes by calling the parent class constructor.
-        # Then, set the specific attributes for a delivery drone, starting with an empty load.
-        pass
+       super().__init__(id, max_speed, current_location)
+       self.cargo_capacity =cargo_capacity
+       self.current_cargo =0
 
 
     def load_cargo(self, weight: float) -> None:
         """
         Loads cargo if it doesn't exceed capacity.
         """
+        if weight+self.current_cargo<=self.cargo_capacity:
+            self.current_cargo+=weight
+        else:
+            raise CargoLimitError()
         # TODO: Check if the new weight can be added without exceeding the drone's capacity.
         # Update the load if possible.
         # (In Task 4, you will update this to raise a custom CargoLimitError if capacity is exceeded).
-        pass
+      
 
 
     def deliver_cargo(self) -> None:
-        """
-        Delivers the cargo and resets current load.
-        """
-        # TODO: Reset the drone's current cargo to indicate a successful delivery.
-        # Print a confirmation message to the console.
-        pass
+       self.current_cargo=0
+       print('Cargo delivered successfully!')
+
 
     def get_type(self) -> str:
         """
         Overrides the base method to return the specific type.
         """
         # TODO: Identify this drone specifically as a delivery drone.
-        return ""
+        return "Delivery Drone"

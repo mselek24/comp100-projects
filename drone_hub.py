@@ -1,7 +1,7 @@
 from drone import Drone
 
 
-class DroneHub:
+class DroneHub(Drone):
     """
     A hub that manages a collection of drones.
 
@@ -11,41 +11,29 @@ class DroneHub:
     """
 
     def __init__(self, name: str):
-        """
-        Initializes the drone hub.
-        """
-        # TODO: Set the name for the hub and initialize an empty list to manage its fleet of drones.
-        pass
+        self.name=name
+        self.drones=[]
 
 
     def add_drone(self, drone: Drone) -> None:
-        """
-        Adds a drone to the hub's fleet.
-        """
-        # TODO: Register a new drone object into the hub's list of managed drones.
-        pass
+        self.drones.append(drone)
 
 
     def list_drones(self) -> None:
-        """
-        Prints each drone's information.
-        """
-        # TODO: Iterate through the managed drones and display each one's details to the console.
-        pass
+        for drone in self.drones:
+            print(f"Drone ID: {drone.id} Type: {drone.get_type()}")
 
 
     def relocate_all_drones(self, new_location: tuple[float, float]) -> None:
-        """
-        Moves all drones in the hub to a new location.
-        """
-        # TODO: Coordinate a mass move by updating the location of every drone in the fleet.
-        pass
+        for drone in self.drones:
+            drone.move_to(new_location)
 
 
     def __str__(self):
-        """
-        Returns a summary of the hub and its docked drones.
-        """
-        # TODO: Return a multi-line string showing the hub's status and a numbered list of all drones currently docked.
-        # Ensure the output matches the required format shown in the instructions.
-        return ""
+        result = f"\n--- DroneHub {self.name}: {len(self.drones)} drones docked ---"
+        index = 0
+        for drone in self.drones:
+            result += f"\n[{index}]: {drone.id} {drone.get_type()}"
+            index += 1
+        result += "\n"
+        return result

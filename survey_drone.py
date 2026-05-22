@@ -1,7 +1,7 @@
 from drone import Drone
 
 
-class SurveyDrone:
+class SurveyDrone(Drone):
     """
     A survey drone that inherits from Drone.
 
@@ -17,7 +17,9 @@ class SurveyDrone:
         """
         # TODO: Initialize the base attributes using the parent class constructor.
         # Set the camera quality and initialize an empty collection for survey data.
-        pass
+        super().__init__(id, max_speed, current_location)
+        self.camera_quality = camera_quality
+        self.survey_data = []
 
 
     def scan_area(self, area_coordinates: list) -> None:
@@ -26,12 +28,11 @@ class SurveyDrone:
         """
         # TODO: Store the provided area coordinates in the drone's survey data.
         # Print a message indicating the scan was completed.
-        pass
+       
+        for coordinate in area_coordinates:
+            self.survey_data.append(coordinate)
+        print("Survey completed!")
 
 
     def get_type(self) -> str:
-        """
-        Overrides the base method to return the specific type.
-        """
-        # TODO: Identify this drone specifically as a survey drone.
-        return ""
+        return "Survey Drone"
