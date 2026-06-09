@@ -8,3 +8,5 @@ class DuplicateIDError(Exception):
 class CargoLimitError(Exception):
     def __init__(self, message="Weight exceeds maximum capacity!"):
         super().__init__(message)
+        
+
