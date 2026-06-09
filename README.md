@@ -1,1 +1,14 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/8rKVIuZO)
+# COMP 100 Projects
+
+Two Python projects completed as part of COMP 100 at Koç University.
+
+## covid-data-analysis
+
+Analyzes COVID-19 case and death data by country. Calculates total cases and deaths, normalizes stats per 1 million population, ranks the worst days by cases or deaths, and estimates death distribution across age groups.
+
+## drone-class-project
+
+An object-oriented drone management system. Implements a base `Drone` class with unique ID validation and location tracking, extended into delivery, survey, and hub drone types with a custom exception handler and simulator.
+
+---
+*Koç University — COMP 100*
